@@ -10,6 +10,30 @@ const Modal = {
   },
 };
 
+const Options = {
+  // Modal que é ativado ao clicar no ícone do perfil
+  openOptions() {
+    document.querySelector(".modal-overlay-options").classList.add("active");
+  },
+
+  // O mesmo modal se fecha ao clicar no X
+  closeOptions() {
+    document.querySelector(".modal-overlay-options").classList.remove("active");
+  },
+};
+
+const Profile = {
+  // Modal que é ativado ao clicar em "Meu perfil".
+  openProfile() {
+    document.querySelector(".modal-overlay-profile").classList.add("active");
+  },
+
+  // Para fechar o modal da opção "Meu perfil"
+  closeProfile() {
+    document.querySelector(".modal-overlay-profile").classList.remove("active");
+  },
+};
+
 const Storage = {
   get() {
     return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
@@ -96,7 +120,7 @@ const DOM = {
             <td class="${CSSclass}">${amount}</td>
             <td class="date">${transaction.date}</td>
             <td>
-                <img onclick="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
+                <img onclick="Transaction.remove(${index})" src="assets/default/minus.svg" alt="Remover transação">
         </td>
         `;
 

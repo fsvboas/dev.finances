@@ -11,13 +11,88 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="shortcut icon"
+      href="assets/more/money-favicon.svg"
+      type="image/x-icon"
+    />
     <title>dev.finance$</title>
   </head>
 
   <body>
     <header>
-      <img src="assets/logo.svg" alt="Logo Dev Finances" />
+      <img src="assets/default/logo.svg" alt="Logo Dev Finances" />
+      <img
+        onclick="Options.openOptions()"
+        class="user-profile"
+        src="assets/more/me.png"
+        alt="Perfil do usuário"
+      />
     </header>
+
+    <div class="modal-overlay-options">
+      <div class="modal-options">
+        <section>
+          <img
+            class="close-image"
+            onclick="Options.closeOptions()"
+            src="assets/more/close.svg"
+            alt="Fechar"
+          />
+        </section>
+
+        <ul>
+          <li onclick="Profile.openProfile()" class="profile">Meu Perfil</li>
+          <li>Configurações</li>
+          <li class="sign-out">Sair</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-overlay-profile">
+      <div class="modal-profile">
+        <section>
+          <img
+            onclick="Profile.closeProfile()"
+            class="go-back"
+            src="assets/more/go-back.svg"
+            alt="Voltar"
+          />
+        </section>
+
+        <section class="profile-resume">
+          <img
+            class="profile-picture"
+            src="assets/more/me.png"
+            alt="Profile picture"
+          />
+          <h3 class="name">Felippe Vilas Boas</h3>
+          <p class="username">@fsvboas</p>
+        </section>
+
+        <div class="social-medias">
+          <section>
+            <a href="https://www.linkedin.com/in/fsvboas/" target="_blank">
+              <img
+                class="social-media-ico"
+                src="assets/social-medias/linkedin.svg"
+                alt="Linkedin"
+              />
+            </a>
+          </section>
+
+          <section>
+            <a href="https://github.com/fsvboas" target="_blank">
+              <img
+                class="social-media-ico2"
+                src="assets/social-medias/github.svg"
+                alt="Github"
+              />
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
 
     <main class="container">
       <section id="balance">
@@ -26,7 +101,7 @@
         <div class="card">
           <h3>
             <span>Entradas</span>
-            <img src="assets/income.svg" alt="Imagem de entradas" />
+            <img src="assets/default/income.svg" alt="Imagem de entradas" />
           </h3>
           <p id="incomeDisplay">R$ 0,00</p>
         </div>
@@ -34,7 +109,7 @@
         <div class="card">
           <h3>
             <span>Saídas</span>
-            <img src="assets/expense.svg" alt="Imagem de saídas" />
+            <img src="assets/default/expense.svg" alt="Imagem de saídas" />
           </h3>
           <p id="expenseDisplay">R$ 0,00</p>
         </div>
@@ -42,7 +117,7 @@
         <div class="card total">
           <h3>
             <span>Total</span>
-            <img src="assets/total.svg" alt="Imagem de total" />
+            <img src="assets/default/total.svg" alt="Imagem de total" />
           </h3>
           <p id="totalDisplay">R$ 0,00</p>
         </div>
@@ -50,9 +125,7 @@
 
       <section id="transaction">
         <h2 class="sr-only">Transações</h2>
-        <a href="#" onclick="Modal.open()" class="button new"
-          >+ Nova Transação</a
-        >
+        <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
         <table id="data-table">
           <thead>
             <tr>
@@ -91,10 +164,7 @@
                 name="amount"
                 placeholder="0,00"
               />
-              <small class="help"
-                >Use o sinal - (negativo) para despesas e , (vírgula) para casas
-                decimais</small
-              >
+              <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais</small>
             </div>
 
             <div class="input-group">
@@ -103,9 +173,7 @@
             </div>
 
             <div class="input-group actions">
-              <a href="#" onclick="Modal.close()" class="button cancel"
-                >Cancelar</a
-              >
+              <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
               <button type="submit">Salvar</button>
             </div>
           </form>

@@ -123,6 +123,21 @@ header {
   padding: 2rem 0 10rem;
 
   text-align: center;
+
+  display: flex;
+
+  justify-content: space-evenly;
+}
+
+.user-profile {
+  width: 65px;
+
+  background: var(--white);
+
+  border: 2px solid var(--white);
+  border-radius: 50%;
+
+  cursor: pointer;
 }
 
 /* BALANCE */
@@ -237,7 +252,9 @@ td.expense {
 }
 
 /* MODAL */
-.modal-overlay {
+.modal-overlay,
+.modal-overlay-options,
+.modal-overlay-profile {
   width: 100%;
   height: 100%;
 
@@ -258,13 +275,17 @@ td.expense {
   z-index: 1;
 }
 
-.modal-overlay.active {
+.modal-overlay.active,
+.modal-overlay-options.active,
+.modal-overlay-profile.active {
   opacity: 1;
 
   visibility: visible;
 }
 
-.modal {
+.modal,
+.modal-options,
+.modal-profile {
   background: #f0f2f5;
 
   padding: 2.4rem;
@@ -310,6 +331,121 @@ input {
 .input-group.actions .button,
 .input-group.actions button {
   width: 48%;
+}
+
+/* OPTIONS */
+.modal-options section {
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+.close-image {
+  width: 20px;
+
+  cursor: pointer;
+
+  opacity: 0.6;
+}
+
+.close-image:hover {
+  opacity: 1;
+}
+
+.modal-options ul {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.modal-options ul li {
+  padding: 5px;
+
+  font-size: 1.3rem;
+
+  cursor: pointer;
+
+  border-bottom: 1px solid rgb(218, 218, 218);
+
+  width: 80%;
+
+  margin-right: 60px;
+  margin-bottom: 10px;
+}
+
+/* PROFILE */
+.modal-profile {
+  height: 50%;
+  width: 50%;
+  min-width: 450px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.go-back {
+  width: 20px;
+
+  cursor: pointer;
+
+  opacity: 0.4;
+}
+
+.go-back:hover {
+  opacity: 1;
+}
+
+.profile-resume {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.modal-profile .profile-picture {
+  width: 140px;
+
+  border: 4px solid #000;
+
+  margin: 0 auto;
+
+  border-radius: 50%;
+}
+
+.modal-profile .name {
+  margin-top: 20px;
+
+  font-size: 1.9rem;
+  font-weight: 400;
+
+  opacity: 0.4;
+
+  text-transform: uppercase;
+}
+
+.social-medias {
+  margin: 50px auto;
+
+  display: flex;
+}
+
+.social-media-ico {
+  width: 60px;
+
+  margin: 15px;
+}
+
+.social-media-ico2 {
+  width: 60px;
+
+  margin-top: 14px;
+}
+
+.sign-out {
+  color: var(--red);
 }
 
 /* FOOTER */
