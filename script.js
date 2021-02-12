@@ -1,34 +1,28 @@
 const Modal = {
-  // Modal que é ativado ao clicar em "Nova transação"
   open() {
     document.querySelector(".modal-overlay").classList.add("active");
   },
 
-  // O mesmo modal se fecha ao clicar em "Cancelar"
   close() {
     document.querySelector(".modal-overlay").classList.remove("active");
   },
 };
 
 const Options = {
-  // Modal que é ativado ao clicar no ícone do perfil
   openOptions() {
     document.querySelector(".modal-overlay-options").classList.add("active");
   },
 
-  // O mesmo modal se fecha ao clicar no X
   closeOptions() {
     document.querySelector(".modal-overlay-options").classList.remove("active");
   },
 };
 
 const Profile = {
-  // Modal que é ativado ao clicar em "Meu perfil".
   openProfile() {
     document.querySelector(".modal-overlay-profile").classList.add("active");
   },
 
-  // Para fechar o modal da opção "Meu perfil"
   closeProfile() {
     document.querySelector(".modal-overlay-profile").classList.remove("active");
   },
@@ -64,44 +58,34 @@ const Transaction = {
 
   incomes() {
     let income = 0;
-    // Pegar todas as transações e para cada transação,
+
     Transaction.all.forEach((transaction) => {
-      // se ela for maior que 0,
       if (transaction.amount > 0) {
-        // somar a uma variável e
         income += transaction.amount;
       }
     });
-    // retornar essa variável
     return income;
   },
 
   expenses() {
     let expense = 0;
-    // Pegar todas as transações,
-    // para cada transação,
+
     Transaction.all.forEach((transaction) => {
-      // se ela for maior que 0,
       if (transaction.amount < 0) {
-        // somar a uma variável
         expense += transaction.amount;
       }
     });
-    // e retornar essa variável
+
     return expense;
   },
 
   total() {
-    // Soma das entradas e saídas de dinheiro. É uma soma e não uma subtração pois as saídas já possuem um valor negativo.
     return Transaction.incomes() + Transaction.expenses();
-  },
+  }
 };
 
 const DOM = {
-  // Selecionando um elemento diretamente do HTML
   transactionsContainer: document.querySelector("#data-table tbody"),
-
-  // Criando uma função que irá criar uma tabela (tr) e adicionando a função transaction nessa tabela.
   addTransaction(transaction, index) {
     const tr = document.createElement("tr");
     tr.innerHTML = DOM.innerHTMLTransaction(transaction, index);
@@ -156,7 +140,6 @@ const Utils = {
     return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`;
   },
 
-  // Formatação de um número para um tipo de moeda (BRL)
   formatCurrency(value) {
     const signal = Number(value) < 0 ? "-" : "";
 
@@ -219,19 +202,13 @@ const Form = {
   },
 
   submit(event) {
-    // Tirar o funcionamento padrão
     event.preventDefault();
 
     try {
-      // Verificar se todas as informações foram preenchidas,
       Form.validateFields();
-      // formatar os dados para salvar,
       const transaction = Form.formatValues();
-      // salvar,
       Transaction.add(transaction);
-      // apagar os dados do formulário e
       Form.clearFields();
-      // fechar o modal e Atualizar a aplicação
       Modal.close();
     } catch (error) {
       alert(error.message);
@@ -243,7 +220,6 @@ const App = {
   init() {
     Transaction.all.forEach(DOM.addTransaction);
 
-    // Retorno da função updateBalance (DOM)
     DOM.updateBalance();
 
     Storage.set(Transaction.all);
@@ -256,3 +232,31 @@ const App = {
 };
 
 App.init();
+
+/* DARKMODE WITH LOCALSTORAGE */
+let darkMode = localStorage.getItem("darkMode");
+const changeTheme = document.querySelector(".changeTheme");
+
+const enableDarkMode = () => {
+  document.body.classList.add("dark-mode");
+  localStorage.setItem("darkMode", "enabled");
+}
+
+const disableDarkMode = () => {
+  document.body.classList.remove("dark-mode");
+  localStorage.setItem("darkMode", null);
+}
+
+if (darkMode === "enabled") {
+  enableDarkMode();
+}
+
+changeTheme.addEventListener("click", () => {
+  darkMode = localStorage.getItem("darkMode");
+
+  if (darkMode !== "enabled") {
+    enableDarkMode();
+  } else {
+    disableDarkMode();
+  }
+});

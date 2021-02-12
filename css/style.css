@@ -1,10 +1,23 @@
 /* GLOBAL */
 :root {
-  --dark-blue: #363f5f;
+  --background: #f0f2f5;
+  --card-color: #fff;
+  --text: #363f5f;
+  --text-table: #969cb3;
+  --border-profile: #181818;
+  --help-text: #000;
+  --red: #e92929;
   --green: #49aa26;
   --light-green: #3dd705;
-  --red: #e92929;
-  --white: #fff;
+}
+
+.dark-mode {
+  --background: #181818;
+  --card-color: #202020;
+  --text: #fff;
+  --text-table: #fff;
+  --border-profile: #f0f2f5;
+  --help-text: #fff;
 }
 
 * {
@@ -20,13 +33,13 @@ html {
 }
 
 body {
-  background: #f0f2f5;
+  background: var(--background);
 
   font-family: "Poppins", sans-serif;
 }
 
 .sr-only {
-  /* PARA ESCONDER O ELEMENTO MAS NÃO AFETAR OS LEITORES DE TELA */
+  /* HIDE ELEMENTS FROM SCREEN READERS */
   position: absolute;
 
   width: 1px;
@@ -55,8 +68,6 @@ body {
 h2 {
   margin-top: 3.2rem;
   margin-bottom: 0.8rem;
-
-  color: var(--dark-blue);
 
   font-weight: 400;
 }
@@ -116,13 +127,28 @@ button:hover {
   opacity: 1;
 }
 
+.theme {
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+.changeTheme {
+  position: absolute;
+
+  width: 50px;
+
+  margin-top: 10px;
+  margin-left: -10px;
+
+  cursor: pointer;
+}
+
 /* HEADER */
 header {
   background: #2d4a22;
 
   padding: 2rem 0 10rem;
-
-  text-align: center;
 
   display: flex;
 
@@ -132,9 +158,7 @@ header {
 .user-profile {
   width: 65px;
 
-  background: var(--white);
-
-  border: 2px solid var(--white);
+  border: 2px solid var(--card-color);
   border-radius: 50%;
 
   cursor: pointer;
@@ -153,7 +177,7 @@ header {
 
 /* CARDS */
 .card {
-  background: var(--white);
+  background: var(--card-color);
 
   padding: 1.5rem 2rem;
 
@@ -161,7 +185,7 @@ header {
 
   margin-bottom: 2rem;
 
-  color: var(--dark-blue);
+  color: var(--text);
 }
 
 .card h3 {
@@ -202,7 +226,7 @@ header {
 
   border-spacing: 0 0.5rem;
 
-  color: #969cb3;
+  color: var(--text-table);
 }
 
 table thead tr th:first-child,
@@ -216,7 +240,7 @@ table tbody tr td:last-child {
 }
 
 table th {
-  background: var(--white);
+  background: var(--card-color);
 
   font-weight: 400;
 
@@ -234,13 +258,13 @@ table tbody tr:hover {
 }
 
 table tbody td {
-  background: var(--white);
+  background: var(--card-color);
 
   padding: 1rem 2rem;
 }
 
 td.description {
-  color: var(--dark-blue);
+  color: var(--text);
 }
 
 td.income {
@@ -286,7 +310,7 @@ td.expense {
 .modal,
 .modal-options,
 .modal-profile {
-  background: #f0f2f5;
+  background: var(--background);
 
   padding: 2.4rem;
 
@@ -302,6 +326,8 @@ td.expense {
 
 #form h2 {
   margin-top: 0;
+
+  color: var(--text);
 }
 
 input {
@@ -318,6 +344,8 @@ input {
 }
 
 .input-group small {
+  color: var(--help-text);
+
   opacity: 0.4;
 }
 
@@ -408,7 +436,7 @@ input {
 .modal-profile .profile-picture {
   width: 140px;
 
-  border: 4px solid #000;
+  border: 4px solid var(--border-profile);
 
   margin: 0 auto;
 
@@ -421,15 +449,23 @@ input {
   font-size: 1.9rem;
   font-weight: 400;
 
+  color: var(--text);
+
   opacity: 0.4;
 
   text-transform: uppercase;
 }
 
-.social-medias {
-  margin: 50px auto;
+.modal-profile .username {
+  color: var(--text);
+}
 
+.social-medias {
   display: flex;
+
+  justify-content: center;
+
+  margin-top: 30px;
 }
 
 .social-media-ico {
@@ -444,6 +480,14 @@ input {
   margin-top: 14px;
 }
 
+.profile {
+  color: var(--text);
+}
+
+.settings {
+  color: var(--text);
+}
+
 .sign-out {
   color: var(--red);
 }
@@ -454,7 +498,7 @@ footer {
 
   padding: 4rem 0 2rem;
 
-  color: var(--dark-blue);
+  color: var(--text);
 
   opacity: 0.6;
 
